@@ -369,13 +369,17 @@ AmpHelpers.IF(isVisible, true) && <AppBanner />;
 ```jsx
 // AmpHelpers.js
 function IF(webCondition, ampCondition) {
-  if (typeof ampCondition !== "undefined") {
-    return ampCondition;
+  if (IS_AMP) {
+    if (typeof ampCondition !== "undefined") {
+      return ampCondition;
+    }
   }
 
   return webCondition;
 }
 ```
+
+`IS_AMP` variable is a global constant variable defined as `true` in AMP's webpack configuration and `false` in web.
 
 ## Library
 
